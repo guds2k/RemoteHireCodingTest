@@ -5,10 +5,11 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 
 import com.org.project.entity.Sellers;
 
-public interface SellersDao extends JpaRepository<Sellers, UUID> {
+public interface SellersDao extends JpaRepository<Sellers, UUID>, CrudRepository<Sellers, UUID>  {
 
 	@Query(value = "from Sellers s where s.producers.id = ?1 ")
 	List<Sellers> findByProducerId(UUID id);

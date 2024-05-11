@@ -3,17 +3,26 @@ package com.org.project.service;
 import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.org.project.dao.SellersDao;
+import com.org.project.dao.Test;
 import com.org.project.dto.SellerPagedDTO;
 import com.org.project.entity.Sellers;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
 
 @Service
 public class ProjectService {
 	@Autowired
 	private SellersDao sellerDao;
+
+	@PersistenceContext
+	private EntityManager entityMgr;
 
 	private static final Integer ITEMS_PER_PAGE = 10;
 
